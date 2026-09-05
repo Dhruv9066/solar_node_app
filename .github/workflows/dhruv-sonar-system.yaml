@@ -26,3 +26,5 @@ jobs:
       
       - name: installing coverage report
         run: npm run coverage
+
+        
