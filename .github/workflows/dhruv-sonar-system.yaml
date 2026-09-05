@@ -37,6 +37,7 @@ jobs:
 
       - name: Installing dependencies
         run: npm install
+        if: steps.npm-cache.outputs.cache-hit != 'true'
 
       - name: Testing the Node app
         run: npm test
