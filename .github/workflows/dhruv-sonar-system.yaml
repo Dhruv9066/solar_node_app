@@ -5,6 +5,10 @@ on:
     branches:
     - main
     - feature
+env:
+  MONGO_URI: "local"
+  MONGO_USERNAME: "superuser"
+  MONGO_PASSWORD: "superuser"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,6 +30,3 @@ jobs:
       
       - name: installing coverage report
         run: npm run coverage
-
-
-
