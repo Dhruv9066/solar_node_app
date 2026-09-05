@@ -11,7 +11,7 @@ jobs:
     steps:
 
       - name: checkout stage 
-        uses: checkout@v7
+        uses: actions/checkout@v7
       
       - name: setting up node jss
         uses: actions/setup-node@v7
