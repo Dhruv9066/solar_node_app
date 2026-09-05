@@ -1,32 +1,42 @@
 name: solar-system
+
 on:
   workflow_dispatch:
   push:
     branches:
-    - main
-    - feature
+      - main
+      - feature
+
 env:
   MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
   MONGO_USERNAME: "superuser"
   MONGO_PASSWORD: "SuperPassword"
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
 
-      - name: checkout stage 
-        uses: actions/checkout@v7
-      
-      - name: setting up node jss
-        uses: actions/setup-node@v7
+    steps:
+      - name: Checkout stage
+        uses: actions/checkout@v4
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      - name: installing dependency 
+      - name: Installing dependencies
         run: npm install
-      
-      - name: tesing the node app
-        run: npm test 
-      
-      - name: installing coverage report
+
+      - name: Testing the Node app
+        run: npm test
+
+      - name: Installing coverage report
         run: npm run coverage
+
+      - name: Archive test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-result
+          path: coverage
+          retention-days: 5
