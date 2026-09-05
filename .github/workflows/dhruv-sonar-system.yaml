@@ -32,6 +32,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Installing dependencies
+        run: npm install
+
       - name: Testing the Node app
         run: npm test
 
