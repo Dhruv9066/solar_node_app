@@ -4,13 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
-      - feature
-
+      - main    
 env:
-  MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
-  MONGO_USERNAME: "superuser"
-  MONGO_PASSWORD: "SuperPassword"
   DOCKER_REPO_NAME: solar-app
 
 jobs:
@@ -72,3 +67,24 @@ jobs:
           context: .
           push: true
           tags: ${{vars.DOCKER_USERNAME}}/${{env.DOCKER_REPO_NAME}}:${{github.run_number}}
+  
+  deploy-production:
+    name: Pretend Production Deployment
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+
+    steps:
+
+      - name: Pretend deployment
+        run: |
+          echo "======================================"
+          echo "      PRODUCTION DEPLOYMENT"
+          echo "======================================"
+          echo "Image tag: ${{ github.sha }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Deployment approved!"
+          echo "Pretending to deploy to production..."
+          echo "Deployment successful!"
