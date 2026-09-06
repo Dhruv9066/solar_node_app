@@ -41,7 +41,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      # added some some dependency and see 
+      # added some some dependency and see cache invalidated
       - name: Installing dependencies
         run: npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
