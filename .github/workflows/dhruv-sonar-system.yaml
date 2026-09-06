@@ -11,6 +11,7 @@ env:
   MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
   MONGO_USERNAME: "superuser"
   MONGO_PASSWORD: "SuperPassword"
+  DOCKER_REPO_NAME: solar-app
 
 jobs:
   build:
@@ -62,4 +63,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: dhruv3020/solar_app:${{github.run_number}}
+          tags: ${{DOCKER_USERNAME}}/${{env.DOCKER_REPO_NAME}}:${{github.run_number}}
