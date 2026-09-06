@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      MONGO_URI: 'mongodb+srv://localhost:27017/superData'
+      MONGO_URI: 'mongodb://localhost:27017/superData'
       MONGO_USERNAME: "non-prod-user"
       MONGO_PASSWORD: "non-prod-password"
     services:
