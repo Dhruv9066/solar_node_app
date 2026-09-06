@@ -16,7 +16,15 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      MONGO_URI: 'mongodb+srv://localhost:27017/superData'
+      MONGO_USERNAME: "non-prod-user"
+      MONGO_PASSWORD: "non-prod-password"
+    services:
+      mongo-db:
+        image: siddharth67/mongo-db:non-prod
+        ports:
+          - 27017:27017
     steps:
       - name: Checkout stage
         uses: actions/checkout@v4
